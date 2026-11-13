@@ -1,0 +1,105 @@
+Pager usage is off.
+
+============================================================
+TEST 1 - PRIMARY KEY NOT NULL
+============================================================
+ silver_rows | null_keys | status 
+-------------+-----------+--------
+         408 |         0 | PASS
+(1 row)
+
+
+============================================================
+TEST 2 - PRIMARY KEY UNIQUENESS
+============================================================
+ silver_rows | distinct_keys | duplicate_keys | status 
+-------------+---------------+----------------+--------
+         408 |           408 |              0 | PASS
+(1 row)
+
+
+============================================================
+TEST 3 - DUPLICATES: BRONZE QUANTIFIED / SILVER = 0
+============================================================
+ bronze_rows | bronze_distinct_source_records | bronze_exact_duplicate_rows | silver_rows | silver_duplicate_keys | status 
+-------------+--------------------------------+-----------------------------+-------------+-----------------------+--------
+         413 |                            408 |                           5 |         408 |                     0 | PASS
+(1 row)
+
+
+============================================================
+TEST 4 - SNAKE_CASE COLUMN NAMES
+============================================================
+ invalid_column_names | invalid_columns | status 
+----------------------+-----------------+--------
+                    0 | none            | PASS
+(1 row)
+
+
+============================================================
+TEST 5 - EXPECTED DATA TYPES
+============================================================
+ type_mismatches | mismatch_details | status 
+-----------------+------------------+--------
+               0 | none             | PASS
+(1 row)
+
+
+============================================================
+TEST 6 - BRONZE TO SILVER RECONCILIATION
+============================================================
+ bronze_rows | silver_rows | rows_removed | explained_exact_duplicates | status 
+-------------+-------------+--------------+----------------------------+--------
+         413 |         408 |            5 |                          5 | PASS
+(1 row)
+
+
+============================================================
+TEST 7 - TRACEABILITY / PROVENANCE
+============================================================
+ silver_rows | invalid_source_system | missing_source_record_id | missing_source_airbyte_raw_id | missing_bronze_airbyte_raw_id | missing_source_file | missing_api_extraction_time | missing_bronze_ingestion_time | status 
+-------------+-----------------------+--------------------------+-------------------------------+-------------------------------+---------------------+-----------------------------+-------------------------------+--------
+         408 |                     0 |                        0 |                             0 |                             0 |                   0 |                           0 |                             0 | PASS
+(1 row)
+
+
+============================================================
+TEST 8 - SOURCE-SPECIFIC RULE: KNOWN PROVIDER ANOMALY PRESERVED
+============================================================
+ ibm_device_non_ibm_provider_rows | known_local_rows | status 
+----------------------------------+------------------+--------
+                                3 |                3 | PASS
+(1 row)
+
+
+Known anomaly details:
+ provider | device  |    job_type     |   source_timestamp_text    |            app_version             
+----------+---------+-----------------+----------------------------+------------------------------------
+ local    | ibm_fez | Mirror Circuits | 2025-09-23T17:37:22.988194 | 0.3.1.post30.dev0
+ local    | ibm_fez | Mirror Circuits | 2025-09-23T17:38:30.963916 | 0.3.1.post30.dev0
+ local    | ibm_fez | WIT             | 2025-10-09T12:48:59.222906 | 0.4.1a1.dev12+g2efab0db5.d20251009
+(3 rows)
+
+
+============================================================
+TEST 3b - DUPLICATE KEY GROUPS / CONFLICTING CONTENT
+============================================================
+ duplicated_key_groups | excess_rows | keys_with_conflicting_content | status 
+-----------------------+-------------+-------------------------------+--------
+                     4 |           5 |                             0 | PASS
+(1 row)
+
+
+============================================================
+TEST 8b - BENCHMARK TIMESTAMP NOT NULL AFTER TYPING
+============================================================
+ null_benchmark_timestamps | status 
+---------------------------+--------
+                         0 | PASS
+(1 row)
+
+
+============================================================
+SUMMARY
+Expected current lot: Bronze=413 / Silver=408 / Removed=5
+============================================================

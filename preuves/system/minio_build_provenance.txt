@@ -1,0 +1,30 @@
+============================================================
+MINIO BUILD PROVENANCE
+============================================================
+
+=== Dockerfile.minio ===
+# MinIO Community est désormais distribué principalement sous forme de source.
+# Cette image compile la dernière release communautaire de référence utilisée pour ce TP.
+FROM golang:1.24-alpine AS build
+ARG MINIO_VERSION=RELEASE.2025-10-15T17-29-55Z
+RUN apk add --no-cache ca-certificates git
+ENV CGO_ENABLED=0 GOBIN=/out
+RUN go install github.com/minio/minio@${MINIO_VERSION}
+
+FROM alpine:3.23
+RUN apk add --no-cache ca-certificates \
+    && addgroup -S minio \
+    && adduser -S -G minio minio \
+    && mkdir -p /data \
+    && chown -R minio:minio /data
+COPY --from=build /out/minio /usr/local/bin/minio
+USER minio
+EXPOSE 9000 9001
+ENTRYPOINT ["minio"]
+CMD ["server", "/data", "--console-address", ":9001"]
+
+=== IMAGE METADATA ===
+id=sha256:1d3b4654c6b13953e3a2bf00abdaa457288dd1832248e34d9b6b3bb21ff60f29
+created=2026-11-01T21:51:44.29123275Z
+repo_tags=["dsid/minio:RELEASE.2025-10-15T17-29-55Z"]
+labels={"com.docker.compose.project":"dsid-bigdata-project","com.docker.compose.service":"minio","com.docker.compose.version":"5.5.1"}

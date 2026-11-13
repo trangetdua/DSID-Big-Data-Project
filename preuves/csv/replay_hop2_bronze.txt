@@ -1,0 +1,13 @@
+============================================================
+RIVERLANE HOP 2 REPLAY - POSTGRESQL BRONZE
+Captured: 2026-11-11T22:30:54Z
+============================================================
+
+         dataset         |  rows   
+-------------------------+---------
+ riverlane_fpga_accuracy |      77
+ riverlane_fpga_memory   |       9
+ riverlane_syndrome_d21  | 1000000
+ riverlane_syndrome_d23  | 1000000
+(4 rows)
+

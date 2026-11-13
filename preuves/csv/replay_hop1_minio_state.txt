@@ -1,0 +1,32 @@
+============================================================
+RIVERLANE HOP 1 REPLAY - MINIO STATE
+Captured: 2026-11-11T22:03:16Z
+============================================================
+
+=== 1. ALL AIRBYTE OBJECTS ===
+[2026-11-11 21:52:55 CET]  44KiB STANDARD extraction_date=2026-11-11/riverlane_fpga_accuracy/2026_11_11_1794430361778_0.jsonl
+[2026-11-11 21:53:30 CET] 2.4KiB STANDARD extraction_date=2026-11-11/riverlane_fpga_memory/2026_11_11_1794430398243_0.jsonl
+[2026-11-11 21:54:20 CET] 141MiB STANDARD extraction_date=2026-11-11/riverlane_syndrome_d21/2026_11_11_1794430432890_0.jsonl
+[2026-11-11 21:54:20 CET] 141MiB STANDARD extraction_date=2026-11-11/riverlane_syndrome_d21/2026_11_11_1794430432890_1.jsonl
+[2026-11-11 21:55:09 CET] 141MiB STANDARD extraction_date=2026-11-11/riverlane_syndrome_d23/2026_11_11_1794430484115_0.jsonl
+[2026-11-11 21:55:09 CET] 141MiB STANDARD extraction_date=2026-11-11/riverlane_syndrome_d23/2026_11_11_1794430484115_1.jsonl
+
+=== 2. JSONL LINE COUNTS BY STREAM ===
+
+--- riverlane_fpga_accuracy ---
+local/dsid-raw/raw/csv/riverlane/airbyte/extraction_date=2026-11-11/riverlane_fpga_accuracy/2026_11_11_1794430361778_0.jsonl | lines=77
+TOTAL_LINES=77
+
+--- riverlane_fpga_memory ---
+local/dsid-raw/raw/csv/riverlane/airbyte/extraction_date=2026-11-11/riverlane_fpga_memory/2026_11_11_1794430398243_0.jsonl | lines=9
+TOTAL_LINES=9
+
+--- riverlane_syndrome_d21 ---
+local/dsid-raw/raw/csv/riverlane/airbyte/extraction_date=2026-11-11/riverlane_syndrome_d21/2026_11_11_1794430432890_0.jsonl | lines=500000
+local/dsid-raw/raw/csv/riverlane/airbyte/extraction_date=2026-11-11/riverlane_syndrome_d21/2026_11_11_1794430432890_1.jsonl | lines=500000
+TOTAL_LINES=1000000
+
+--- riverlane_syndrome_d23 ---
+local/dsid-raw/raw/csv/riverlane/airbyte/extraction_date=2026-11-11/riverlane_syndrome_d23/2026_11_11_1794430484115_0.jsonl | lines=500000
+local/dsid-raw/raw/csv/riverlane/airbyte/extraction_date=2026-11-11/riverlane_syndrome_d23/2026_11_11_1794430484115_1.jsonl | lines=500000
+TOTAL_LINES=1000000

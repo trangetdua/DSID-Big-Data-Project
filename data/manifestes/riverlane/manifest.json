@@ -1,0 +1,94 @@
+{
+  "manifest_version": 1,
+  "dataset": {
+    "name": "riverlane_qec",
+    "title": "Data supporting 'A real-time, scalable, fast and resource-efficient decoder for a quantum computer'",
+    "repository": "Zenodo",
+    "record_url": "https://zenodo.org/records/11621878",
+    "doi": "10.5281/zenodo.11621878",
+    "retrieved_date": "2026-11-09"
+  },
+  "raw_preservation": {
+    "purpose": "Preserve source files byte-identically before Airbyte serialization to JSONL.",
+    "bucket": "dsid-raw",
+    "prefix": "raw/csv/riverlane/original/extraction_date=2026-11-09/"
+  },
+  "license": {
+    "status": "VERIFIED",
+    "name": "Creative Commons Attribution 4.0 International",
+    "spdx_id": "CC-BY-4.0",
+    "reuse_summary": "Reuse is permitted under CC BY 4.0 subject to attribution.",
+    "verification": {
+      "dataset_doi": "10.5281/zenodo.11621878",
+      "sources": [
+        {
+          "name": "NLM Dataset Catalog",
+          "url": "https://datasetcatalog.nlm.nih.gov/dataset?q=0001927615",
+          "evidence": "Rights: Creative Commons Attribution 4.0 International (CC BY 4.0)"
+        },
+        {
+          "name": "OpenAIRE",
+          "url": "https://explore.openaire.eu/search/result?pid=10.5281%2Fzenodo.11621878",
+          "evidence": "License: CC BY; metadata sources include Zenodo and DataCite"
+        }
+      ],
+      "note": "The current Zenodo HTML record renders the Rights/License field without a visible value, so the report does not claim that the Zenodo web page itself visibly displays CC BY 4.0."
+    }
+  },
+  "generated_at_utc": "2026-11-11T18:04:12.954083+00:00",
+  "files": [
+    {
+      "filename": "fpga_accuracy_data.csv",
+      "role": "ingested_csv",
+      "bytes": 11996,
+      "sha256": "692b417565a467f77c2137116046d30f62b9284f855de54485ac67376e05e091",
+      "minio_bucket": "dsid-raw",
+      "minio_object_key": "raw/csv/riverlane/original/extraction_date=2026-11-09/fpga_accuracy_data.csv",
+      "media_type": "text/csv",
+      "encoding": "us-ascii",
+      "delimiter": ","
+    },
+    {
+      "filename": "fpga_memory_data.csv",
+      "role": "ingested_csv",
+      "bytes": 205,
+      "sha256": "72a91cb4cc3961e12228de9349d33a58b5b6499f8c308b997122a9388630e21a",
+      "minio_bucket": "dsid-raw",
+      "minio_object_key": "raw/csv/riverlane/original/extraction_date=2026-11-09/fpga_memory_data.csv",
+      "media_type": "text/csv",
+      "encoding": "us-ascii",
+      "delimiter": ","
+    },
+    {
+      "filename": "noise_rate_sampling_full_d21.csv",
+      "role": "ingested_csv",
+      "bytes": 37601909,
+      "sha256": "0de1ec2139946adc50fa69cf17b1d5e7e8c057aa02850ab2de1983c5695fef51",
+      "minio_bucket": "dsid-raw",
+      "minio_object_key": "raw/csv/riverlane/original/extraction_date=2026-11-09/noise_rate_sampling_full_d21.csv",
+      "media_type": "text/csv",
+      "encoding": "us-ascii",
+      "delimiter": ","
+    },
+    {
+      "filename": "noise_rate_sampling_full_d23.csv",
+      "role": "ingested_csv",
+      "bytes": 37693289,
+      "sha256": "cbf59b4f3dcd89e8a26272500ce45b4c240779ba75b735e320559142cf173c37",
+      "minio_bucket": "dsid-raw",
+      "minio_object_key": "raw/csv/riverlane/original/extraction_date=2026-11-09/noise_rate_sampling_full_d23.csv",
+      "media_type": "text/csv",
+      "encoding": "us-ascii",
+      "delimiter": ","
+    },
+    {
+      "filename": "stim_circuits.zip",
+      "role": "reference_only_not_ingested",
+      "bytes": 1102040,
+      "sha256": "f018d695264b34c63ddd7e7f34164d45464427a10a42311884210cd8c7e89877",
+      "minio_bucket": "dsid-raw",
+      "minio_object_key": "raw/csv/riverlane/original/extraction_date=2026-11-09/stim_circuits.zip",
+      "media_type": "application/zip"
+    }
+  ]
+}

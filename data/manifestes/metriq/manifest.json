@@ -1,0 +1,19 @@
+{
+  "manifest_version": 1,
+  "dataset": {
+    "name": "metriq_benchmark",
+    "source_url": "https://unitaryfoundation.github.io/metriq-data/benchmark.latest.json",
+    "license": "CC-BY-4.0"
+  },
+  "lot": {
+    "bucket": "dsid-raw",
+    "object_key": "raw/api/metriq/extraction_date=2026-11-03/api_metriq_benchmark/2026_11_03_1793664792132_0.jsonl",
+    "extraction_date": "2026-11-03",
+    "format": "jsonl",
+    "bytes": 336196,
+    "records": 413,
+    "sha256": "1561758954077096464acf2bdb671588c95b99858b98f5e71fd38e59d29e4f97"
+  },
+  "generated_at_utc": "2026-11-13T18:30:13.894172+00:00",
+  "note": "Manifeste établi a posteriori à partir de l'objet RAW conservé dans MinIO."
+}

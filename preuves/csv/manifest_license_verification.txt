@@ -1,0 +1,16 @@
+============================================================
+RIVERLANE MANIFEST - LICENSE + BYTE VERIFICATION
+============================================================
+
+local_manifest_sha256=d2cc29bfb5a748b52b52c8e75550567d37429839e111697aca430aea1182822d
+minio_manifest_sha256=d2cc29bfb5a748b52b52c8e75550567d37429839e111697aca430aea1182822d
+manifest_byte_identical=PASS
+
+=== LICENSE FROM MINIO MANIFEST ===
+status=VERIFIED
+name=Creative Commons Attribution 4.0 International
+spdx_id=CC-BY-4.0
+dataset_doi=10.5281/zenodo.11621878
+license_metadata=PASS
+
+FINAL STATUS: PASS - UPDATED MANIFEST VERIFIED IN MINIO

@@ -1,0 +1,66 @@
+============================================================
+CRM DELTA / STATE EVIDENCE
+Generated at: Wed Nov 11 18:57:52 CET 2026
+============================================================
+
+NOTE:
+No independently captured pre-creation snapshot is available.
+Sections 1-4 below therefore document only the observed post-entry state.
+The reconstructed initial state (0/0/0) is given in the supplement at the
+end of this file and in preuves/crm/crm_initial_state_reconstructed.txt.
+
+=== 1. ESPOCRM / MARIADB SOURCE STATE ===
+dataset	rows_count
+account	1
+contact	2
+opportunity	1
+
+=== 2. POSTGRESQL BRONZE STATE ===
+   dataset   | rows_count 
+-------------+------------
+ account     |          1
+ contact     |          2
+ opportunity |          1
+(3 rows)
+
+
+=== 3. POSTGRESQL SILVER STATE ===
+   dataset   | rows_count 
+-------------+------------
+ account     |          1
+ contact     |          2
+ opportunity |          1
+(3 rows)
+
+
+=== 4. SOURCE CREATION / MODIFICATION TIMESTAMPS ===
+dataset	id	created_at	modified_at
+account	6ae7bc09dc5042af7	2026-11-01 22:24:09	2026-11-01 22:24:09
+contact	6ae7bc3a72e63f309	2026-11-01 22:24:58	2026-11-01 22:24:58
+contact	6ae7bc55c0617c474	2026-11-01 22:25:25	2026-11-01 22:25:25
+opportunity	6ae7bc87208af36d0	2026-11-01 22:26:15	2026-11-01 22:26:15
+
+============================================================
+SUPPLEMENT - HISTORICAL INITIAL-STATE RECONSTRUCTION
+============================================================
+
+A contemporaneous pre-creation snapshot was not captured.
+
+However, a later historical reconstruction was performed from the
+complete MariaDB source tables and their created_at timestamps.
+
+Using 2026-11-01 22:24:09, the timestamp of the first Account created
+for the controlled CRM scenario, the reconstructed state is:
+
+- account:     0 rows before the scenario -> 1 after
+- contact:     0 rows before the scenario -> 2 after
+- opportunity: 0 rows before the scenario -> 1 after
+
+This reconstruction is documented separately in:
+preuves/crm/crm_initial_state_reconstructed.txt
+
+Therefore the project distinguishes:
+1. a reconstructed historical initial state;
+2. the observed post-entry source state;
+3. the observed Bronze state after Airbyte;
+4. the observed Silver state after transformation.

@@ -1,0 +1,34 @@
+============================================================
+RIVERLANE REPLAY / IDEMPOTENCE - BEFORE
+Captured: 2026-11-11T18:16:31Z
+============================================================
+
+Replay strategy:
+- Airbyte File Source -> MinIO: Full Refresh | Overwrite
+- Airbyte S3 Source -> PostgreSQL Bronze: Full Refresh | Overwrite
+- Silver: deterministic DROP/CREATE from versioned SQL
+
+=== 1. ORIGINAL CSV SOURCE ROW COUNTS ===
+fpga_accuracy_data.csv | rows=77
+fpga_memory_data.csv | rows=9
+noise_rate_sampling_full_d21.csv | rows=1000000
+noise_rate_sampling_full_d23.csv | rows=1000000
+
+=== 2. POSTGRESQL BRONZE COUNTS ===
+         dataset         |  rows   
+-------------------------+---------
+ riverlane_fpga_accuracy |      77
+ riverlane_fpga_memory   |       9
+ riverlane_syndrome_d21  | 1000000
+ riverlane_syndrome_d23  | 1000000
+(4 rows)
+
+
+=== 3. POSTGRESQL SILVER COUNTS ===
+            dataset             |  rows   
+--------------------------------+---------
+ riverlane_fpga_accuracy        |      77
+ riverlane_fpga_memory          |       9
+ riverlane_syndrome_observation | 2000000
+(3 rows)
+

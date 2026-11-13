@@ -1,0 +1,17 @@
+.env
+.DS_Store
+*.log
+
+# Secrets
+.env
+.env.local
+*.pem
+*.key
+
+# macOS
+.DS_Store
+__MACOSX/
+
+# Python / temporary
+__pycache__/
+.venv/

@@ -1,0 +1,11 @@
+      dataset       | bronze_rows | silver_rows 
+--------------------+-------------+-------------
+ Metriq API         |         413 |         408
+ Riverlane accuracy |          77 |          77
+ Riverlane memory   |           9 |           9
+ Riverlane syndrome |     2000000 |     2000000
+ CRM account        |           1 |           1
+ CRM contact        |           2 |           2
+ CRM opportunity    |           1 |           1
+(7 rows)
+

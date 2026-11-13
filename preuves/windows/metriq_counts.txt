@@ -1,0 +1,6 @@
+ layer  | rows 
+--------+------
+ bronze |  413
+ silver |  408
+(2 rows)
+

@@ -1,0 +1,12 @@
+============================================================
+CRM INITIAL STATE - HISTORICAL RECONSTRUCTION
+============================================================
+
+The initial state was not captured as a contemporaneous
+snapshot. It is reconstructed from the complete source tables
+and their created_at timestamps.
+
+dataset	rows_before_first_creation	rows_after_scenario	first_created_at	last_created_at
+account	0	1	2026-11-01 22:24:09	2026-11-01 22:24:09
+contact	0	2	2026-11-01 22:24:58	2026-11-01 22:25:25
+opportunity	0	1	2026-11-01 22:26:15	2026-11-01 22:26:15

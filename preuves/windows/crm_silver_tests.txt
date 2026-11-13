@@ -1,0 +1,141 @@
+Pager usage is off.
+============================================================
+TEST 1 - SILVER PRIMARY KEYS NOT NULL
+============================================================
+   dataset   | n | null_keys | status 
+-------------+---+-----------+--------
+ account     | 1 |         0 | PASS
+ contact     | 2 |         0 | PASS
+ opportunity | 1 |         0 | PASS
+(3 rows)
+
+
+============================================================
+TEST 2 - SILVER PRIMARY KEY UNIQUENESS
+============================================================
+   dataset   | n | unique_keys | duplicate_keys | status 
+-------------+---+-------------+----------------+--------
+ account     | 1 |           1 |              0 | PASS
+ contact     | 2 |           2 |              0 | PASS
+ opportunity | 1 |           1 |              0 | PASS
+(3 rows)
+
+
+============================================================
+TEST 3A - BRONZE DUPLICATES QUANTIFIED
+============================================================
+   dataset   | bronze_rows | source_ids | null_source_ids | duplicate_versions | status 
+-------------+-------------+------------+-----------------+--------------------+--------
+ account     |           1 |          1 |               0 |                  0 | PASS
+ contact     |           2 |          2 |               0 |                  0 | PASS
+ opportunity |           1 |          1 |               0 |                  0 | PASS
+(3 rows)
+
+
+============================================================
+TEST 3B - DETERMINISTIC DEDUP WINNER
+============================================================
+ wrong_winners | status 
+---------------+--------
+             0 | PASS
+(1 row)
+
+
+============================================================
+TEST 3C - AIRBYTE TIE-BREAK ID QUALITY
+============================================================
+   dataset   | bronze_rows | missing_raw_ids | duplicate_nonnull_raw_ids | status 
+-------------+-------------+-----------------+---------------------------+--------
+ account     |           1 |               0 |                         0 | PASS
+ contact     |           2 |               0 |                         0 | PASS
+ opportunity |           1 |               0 |                         0 | PASS
+(3 rows)
+
+
+============================================================
+TEST 4 - SNAKE_CASE COLUMN NAMES
+============================================================
+ invalid_columns | details | status 
+-----------------+---------+--------
+               0 | none    | PASS
+(1 row)
+
+
+============================================================
+TEST 5 - EXPECTED POSTGRESQL DATA TYPES
+============================================================
+   table_name    |    column_name    |          data_type          |          allowed_types          | status 
+-----------------+-------------------+-----------------------------+---------------------------------+--------
+ crm_account     | account_id        | text                        | {text}                          | PASS
+ crm_account     | created_at        | timestamp without time zone | {"timestamp without time zone"} | PASS
+ crm_account     | deleted           | boolean                     | {boolean}                       | PASS
+ crm_account     | ingested_at_utc   | timestamp with time zone    | {"timestamp with time zone"}    | PASS
+ crm_account     | modified_at       | timestamp without time zone | {"timestamp without time zone"} | PASS
+ crm_account     | source_record_id  | text                        | {text}                          | PASS
+ crm_account     | stream_updated_at | timestamp without time zone | {"timestamp without time zone"} | PASS
+ crm_contact     | account_id        | text                        | {text}                          | PASS
+ crm_contact     | contact_id        | text                        | {text}                          | PASS
+ crm_contact     | created_at        | timestamp without time zone | {"timestamp without time zone"} | PASS
+ crm_contact     | deleted           | boolean                     | {boolean}                       | PASS
+ crm_contact     | ingested_at_utc   | timestamp with time zone    | {"timestamp with time zone"}    | PASS
+ crm_contact     | modified_at       | timestamp without time zone | {"timestamp without time zone"} | PASS
+ crm_contact     | source_record_id  | text                        | {text}                          | PASS
+ crm_contact     | stream_updated_at | timestamp without time zone | {"timestamp without time zone"} | PASS
+ crm_opportunity | account_id        | text                        | {text}                          | PASS
+ crm_opportunity | amount            | numeric                     | {numeric}                       | PASS
+ crm_opportunity | close_date        | date                        | {date}                          | PASS
+ crm_opportunity | contact_id        | text                        | {text}                          | PASS
+ crm_opportunity | created_at        | timestamp without time zone | {"timestamp without time zone"} | PASS
+ crm_opportunity | deleted           | boolean                     | {boolean}                       | PASS
+ crm_opportunity | ingested_at_utc   | timestamp with time zone    | {"timestamp with time zone"}    | PASS
+ crm_opportunity | modified_at       | timestamp without time zone | {"timestamp without time zone"} | PASS
+ crm_opportunity | opportunity_id    | text                        | {text}                          | PASS
+ crm_opportunity | probability       | bigint                      | {bigint}                        | PASS
+ crm_opportunity | source_record_id  | text                        | {text}                          | PASS
+ crm_opportunity | stream_updated_at | timestamp without time zone | {"timestamp without time zone"} | PASS
+(27 rows)
+
+
+============================================================
+TEST 6 - BRONZE TO SILVER RECONCILIATION
+============================================================
+   dataset   | bronze_rows | expected_silver | silver_rows | rows_deduplicated | status 
+-------------+-------------+-----------------+-------------+-------------------+--------
+ account     |           1 |               1 |           1 |                 0 | PASS
+ contact     |           2 |               2 |           2 |                 0 | PASS
+ opportunity |           1 |               1 |           1 |                 0 | PASS
+(3 rows)
+
+
+============================================================
+TEST 7 - TRACEABILITY AND PROVENANCE
+============================================================
+   dataset   | invalid_rows | status 
+-------------+--------------+--------
+ account     |            0 | PASS
+ contact     |            0 | PASS
+ opportunity |            0 | PASS
+(3 rows)
+
+
+============================================================
+TEST 8 - CRM RELATIONSHIP CONSISTENCY
+============================================================
+ contacts_missing_account_id | opportunities_missing_account_id | orphan_contacts | orphan_opportunity_accounts | orphan_opportunity_contacts | status 
+-----------------------------+----------------------------------+-----------------+-----------------------------+-----------------------------+--------
+                           0 |                                0 |               0 |                           0 |                           0 | PASS
+(1 row)
+
+
+============================================================
+TEST 9 - SOURCE-SPECIFIC CRM BUSINESS RULES
+============================================================
+ unnamed_accounts | contacts_missing_last_name | unnamed_opportunities | invalid_amounts | invalid_probabilities | missing_stages | status 
+------------------+----------------------------+-----------------------+-----------------+-----------------------+----------------+--------
+                0 |                          0 |                     0 |               0 |                     0 |              0 | PASS
+(1 row)
+
+
+============================================================
+END CRM TESTS
+============================================================

@@ -1,0 +1,98 @@
+Pager usage is off.
+============================================================
+TEST 1 - PRIMARY KEY NOT NULL
+============================================================
+           table_name           |  rows   | null_keys | status 
+--------------------------------+---------+-----------+--------
+ riverlane_fpga_accuracy        |      77 |         0 | PASS
+ riverlane_fpga_memory          |       9 |         0 | PASS
+ riverlane_syndrome_observation | 2000000 |         0 | PASS
+(3 rows)
+
+
+============================================================
+TEST 2 - PRIMARY KEY UNIQUENESS
+============================================================
+           table_name           |  rows   | distinct_keys | duplicate_keys | status 
+--------------------------------+---------+---------------+----------------+--------
+ riverlane_fpga_accuracy        |      77 |            77 |              0 | PASS
+ riverlane_fpga_memory          |       9 |             9 |              0 | PASS
+ riverlane_syndrome_observation | 2000000 |       2000000 |              0 | PASS
+(3 rows)
+
+
+============================================================
+TEST 3 - BRONZE TO SILVER RECONCILIATION
+============================================================
+ dataset  | bronze_rows | silver_rows | difference | status 
+----------+-------------+-------------+------------+--------
+ accuracy |          77 |          77 |          0 | PASS
+ memory   |           9 |           9 |          0 | PASS
+ syndrome |     2000000 |     2000000 |          0 | PASS
+(3 rows)
+
+
+============================================================
+TEST 4 - SNAKE_CASE COLUMN NAMES
+============================================================
+ invalid_column_names | invalid_columns | status 
+----------------------+-----------------+--------
+                    0 | none            | PASS
+(1 row)
+
+
+============================================================
+TEST 5 - EXPECTED DATA TYPES
+============================================================
+ type_mismatches | mismatch_details | status 
+-----------------+------------------+--------
+               0 | none             | PASS
+(1 row)
+
+
+============================================================
+TEST 6 - TRACEABILITY / PROVENANCE
+============================================================
+           table_name           |  rows   | invalid_provenance_rows | status 
+--------------------------------+---------+-------------------------+--------
+ riverlane_fpga_accuracy        |      77 |                       0 | PASS
+ riverlane_fpga_memory          |       9 |                       0 | PASS
+ riverlane_syndrome_observation | 2000000 |                       0 | PASS
+(3 rows)
+
+
+============================================================
+TEST 7 - SYNDROME MULTIPLICITY PRESERVED
+Repeated scientific values are valid observations
+============================================================
+ bronze_observations | silver_observations | value_combinations | multiplicity_mismatches | status 
+---------------------+---------------------+--------------------+-------------------------+--------
+             2000000 |             2000000 |               2855 |                       0 | PASS
+(1 row)
+
+
+============================================================
+TEST 8 - SOURCE-SPECIFIC SCIENTIFIC RULES
+============================================================
+ syndrome_group_count | bad_group_sizes | syndrome_rule_violations | accuracy_rule_violations | memory_rule_violations | status 
+----------------------+-----------------+--------------------------+--------------------------+------------------------+--------
+                   20 |               0 |                        0 |                        0 |                      0 | PASS
+(1 row)
+
+
+============================================================
+TEST 9 - BRONZE REPEATED OBSERVATIONS QUANTIFIED
+Repeated rows are measured, not automatically treated as errors
+============================================================
+ source | total_rows | distinct_value_combinations | repeated_observations | status 
+--------+------------+-----------------------------+-----------------------+--------
+ d21    |    1000000 |                        1340 |                998660 | PASS
+ d23    |    1000000 |                        1515 |                998485 | PASS
+(2 rows)
+
+
+============================================================
+SUMMARY
+Expected: accuracy=77 / memory=9 / syndrome=2,000,000
+Expected syndrome experimental groups: 20 x 100,000
+============================================================

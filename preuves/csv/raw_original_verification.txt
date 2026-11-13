@@ -1,0 +1,23 @@
+============================================================
+RIVERLANE RAW ORIGINAL - BYTE INTEGRITY VERIFICATION
+============================================================
+fpga_accuracy_data.csv | local_bytes=11996 | minio_bytes=11996 | sha256=692b417565a467f77c2137116046d30f62b9284f855de54485ac67376e05e091 | PASS
+fpga_memory_data.csv | local_bytes=205 | minio_bytes=205 | sha256=72a91cb4cc3961e12228de9349d33a58b5b6499f8c308b997122a9388630e21a | PASS
+noise_rate_sampling_full_d21.csv | local_bytes=37601909 | minio_bytes=37601909 | sha256=0de1ec2139946adc50fa69cf17b1d5e7e8c057aa02850ab2de1983c5695fef51 | PASS
+noise_rate_sampling_full_d23.csv | local_bytes=37693289 | minio_bytes=37693289 | sha256=cbf59b4f3dcd89e8a26272500ce45b4c240779ba75b735e320559142cf173c37 | PASS
+stim_circuits.zip | local_bytes=1102040 | minio_bytes=1102040 | sha256=f018d695264b34c63ddd7e7f34164d45464427a10a42311884210cd8c7e89877 | PASS
+
+=== MANIFEST OBJECT ===
+local_manifest_sha256=df4a46afac5d148a0eea01c9896e09e9fe4b4e138aea5041e8f8f07c199c63e9
+minio_manifest_sha256=df4a46afac5d148a0eea01c9896e09e9fe4b4e138aea5041e8f8f07c199c63e9
+manifest_byte_identical=PASS
+
+============================================================
+FINAL STATUS: PASS - ALL MINIO OBJECTS ARE BYTE-IDENTICAL
+============================================================
+
+NOTE (added 2026-11-12):
+The manifest hash above (df4a46...) is the first manifest version, whose
+license status was still TO_VERIFY. The manifest was then updated with the
+verified CC-BY-4.0 metadata; the final version (d2cc29...) is the one shipped
+in the submission and is verified in manifest_license_verification.txt.

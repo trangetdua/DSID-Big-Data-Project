@@ -1,0 +1,511 @@
+version: 7.28.2
+
+type: DeclarativeSource
+
+check:
+  type: CheckStream
+  stream_names:
+    - api_metriq_benchmark
+
+streams:
+  - type: DeclarativeStream
+    name: api_metriq_benchmark
+    retriever:
+      type: SimpleRetriever
+      decoder:
+        type: JsonDecoder
+      requester:
+        type: HttpRequester
+        url: https://unitaryfoundation.github.io/metriq-data/benchmark.latest.json
+        http_method: GET
+        request_headers:
+          Accept: application/json
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: []
+    schema_loader:
+      type: InlineSchemaLoader
+      schema:
+        type: object
+        $schema: http://json-schema.org/schema#
+        properties:
+          device:
+            type:
+              - string
+              - "null"
+          errors:
+            type:
+              - object
+              - "null"
+            properties:
+              score:
+                type:
+                  - number
+                  - "null"
+              polarization:
+                type:
+                  - number
+                  - "null"
+              accuracy_score:
+                type:
+                  - number
+                  - "null"
+              expectation_value:
+                type:
+                  - number
+                  - "null"
+              success_probability:
+                type:
+                  - number
+                  - "null"
+          params:
+            type:
+              - object
+              - "null"
+            properties:
+              mode:
+                type:
+                  - string
+                  - "null"
+              seed:
+                type:
+                  - number
+                  - "null"
+              shots:
+                type:
+                  - number
+                  - "null"
+              width:
+                type:
+                  - number
+                  - "null"
+              method:
+                type:
+                  - number
+                  - "null"
+              trials:
+                type:
+                  - number
+                  - "null"
+              lengths:
+                type:
+                  - array
+                  - "null"
+                items:
+                  type:
+                    - number
+                    - "null"
+              num_shots:
+                type:
+                  - number
+                  - "null"
+              delta_beta:
+                type:
+                  - number
+                  - "null"
+              graph_type:
+                type:
+                  - string
+                  - "null"
+              max_colors:
+                type:
+                  - number
+                  - "null"
+              max_qubits:
+                type:
+                  - number
+                  - "null"
+              min_qubits:
+                type:
+                  - number
+                  - "null"
+              num_layers:
+                type:
+                  - number
+                  - "null"
+              num_qubits:
+                type:
+                  - number
+                  - "null"
+              delta_gamma:
+                type:
+                  - number
+                  - "null"
+              num_samples:
+                type:
+                  - number
+                  - "null"
+              qaoa_layers:
+                type:
+                  - array
+                  - "null"
+                items:
+                  type:
+                    - number
+                    - "null"
+              skip_qubits:
+                type:
+                  - number
+                  - "null"
+              use_session:
+                type:
+                  - boolean
+                  - "null"
+              max_circuits:
+                type:
+                  - number
+                  - "null"
+              num_circuits:
+                type:
+                  - number
+                  - "null"
+              benchmark_name:
+                type:
+                  - string
+                  - "null"
+              two_qubit_gate:
+                type:
+                  - string
+                  - "null"
+              confidence_level:
+                type:
+                  - number
+                  - "null"
+              error_mitigation:
+                type:
+                  - array
+                  - "null"
+              num_random_trials:
+                type:
+                  - number
+                  - "null"
+              decompose_cliffords:
+                type:
+                  - boolean
+                  - "null"
+              num_qubits_in_chain:
+                type:
+                  - number
+                  - "null"
+              two_qubit_gate_name:
+                type:
+                  - string
+                  - "null"
+              two_qubit_gate_prob:
+                type:
+                  - number
+                  - "null"
+              constrain_rb_offset_b:
+                type:
+                  - boolean
+                  - "null"
+              one_qubit_basis_gates:
+                type:
+                  - array
+                  - "null"
+                items:
+                  type:
+                    - string
+                    - "null"
+              decompose_clifford_ops:
+                type:
+                  - boolean
+                  - "null"
+              use_midcircuit_measurement:
+                type:
+                  - boolean
+                  - "null"
+          outcome:
+            type:
+              - string
+              - "null"
+          results:
+            type:
+              - object
+              - "null"
+            properties:
+              score:
+                type:
+                  - number
+                  - "null"
+              eplg_10:
+                type:
+                  - number
+                  - "null"
+              eplg_20:
+                type:
+                  - number
+                  - "null"
+              eplg_50:
+                type:
+                  - number
+                  - "null"
+              eplg_100:
+                type:
+                  - number
+                  - "null"
+              chain_eplgs:
+                type:
+                  - array
+                  - "null"
+                items:
+                  type:
+                    - number
+                    - "null"
+              clops_score:
+                type:
+                  - number
+                  - "null"
+              approx_ratio:
+                type:
+                  - array
+                  - "null"
+                items:
+                  type:
+                    - number
+                    - "null"
+              polarization:
+                type:
+                  - number
+                  - "null"
+              chain_lengths:
+                type:
+                  - array
+                  - "null"
+                items:
+                  type:
+                    - number
+                    - "null"
+              accuracy_score:
+                type:
+                  - number
+                  - "null"
+              binary_success:
+                type:
+                  - boolean
+                  - "null"
+              confidence_pass:
+                type:
+                  - array
+                  - "null"
+                items:
+                  type:
+                    - boolean
+                    - "null"
+              expectation_value:
+                type:
+                  - number
+                  - "null"
+              fraction_connected:
+                type:
+                  - number
+                  - "null"
+              random_approx_ratio:
+                type:
+                  - number
+                  - "null"
+              success_probability:
+                type:
+                  - number
+                  - "null"
+              effective_approx_ratio:
+                type:
+                  - array
+                  - "null"
+                items:
+                  type:
+                    - number
+                    - "null"
+              largest_connected_size:
+                type:
+                  - number
+                  - "null"
+          job_type:
+            type:
+              - string
+              - "null"
+          provider:
+            type:
+              - string
+              - "null"
+          suite_id:
+            type:
+              - string
+              - "null"
+          timestamp:
+            type:
+              - string
+              - "null"
+          directions:
+            type:
+              - object
+              - "null"
+            properties:
+              score:
+                type:
+                  - string
+                  - "null"
+              eplg_10:
+                type:
+                  - string
+                  - "null"
+              eplg_20:
+                type:
+                  - string
+                  - "null"
+              eplg_50:
+                type:
+                  - string
+                  - "null"
+              eplg_100:
+                type:
+                  - string
+                  - "null"
+              accuracy_score:
+                type:
+                  - string
+                  - "null"
+              expectation_value:
+                type:
+                  - string
+                  - "null"
+              fraction_connected:
+                type:
+                  - string
+                  - "null"
+              largest_connected_size:
+                type:
+                  - string
+                  - "null"
+          app_version:
+            type:
+              - string
+              - "null"
+          metriq_score:
+            type:
+              - number
+              - "null"
+          outcome_detail:
+            type:
+              - object
+              - "null"
+            properties:
+              source:
+                type:
+                  - string
+                  - "null"
+              error_message:
+                type:
+                  - string
+                  - "null"
+          device_metadata:
+            type:
+              - object
+              - "null"
+            properties:
+              version:
+                type:
+                  - string
+                  - "null"
+              simulator:
+                type:
+                  - boolean
+                  - "null"
+              num_qubits:
+                type:
+                  - number
+                  - "null"
+          normalized_scores:
+            type:
+              - object
+              - "null"
+            properties:
+              score:
+                type:
+                  - number
+                  - "null"
+              eplg_10:
+                type:
+                  - number
+                  - "null"
+              eplg_20:
+                type:
+                  - number
+                  - "null"
+              eplg_50:
+                type:
+                  - number
+                  - "null"
+              eplg_100:
+                type:
+                  - number
+                  - "null"
+              bseq_score:
+                type:
+                  - number
+                  - "null"
+              accuracy_score:
+                type:
+                  - number
+                  - "null"
+              expectation_value:
+                type:
+                  - number
+                  - "null"
+          normalization_baselines:
+            type:
+              - object
+              - "null"
+            properties:
+              score:
+                type:
+                  - number
+                  - "null"
+              eplg_10:
+                type:
+                  - number
+                  - "null"
+              eplg_20:
+                type:
+                  - number
+                  - "null"
+              eplg_50:
+                type:
+                  - number
+                  - "null"
+              eplg_100:
+                type:
+                  - number
+                  - "null"
+              accuracy_score:
+                type:
+                  - number
+                  - "null"
+              expectation_value:
+                type:
+                  - number
+                  - "null"
+        additionalProperties: true
+
+spec:
+  type: Spec
+  connection_specification:
+    type: object
+    properties: {}
+
+metadata:
+  testedStreams:
+    stream_0:
+      streamHash: ad11f9fa446b445a056b0f48d54e74059e0bc977
+    api_metriq_benchmark:
+      isStale: false
+      hasRecords: true
+      streamHash: 45cefe841bab6b3aa916f01a277d1c561a13f168
+      hasResponse: true
+      primaryKeysAreUnique: true
+      primaryKeysArePresent: true
+      responsesAreSuccessful: true
+  autoImportSchema:
+    api_metriq_benchmark: true
